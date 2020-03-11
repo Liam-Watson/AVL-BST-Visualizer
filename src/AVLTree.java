@@ -1,10 +1,12 @@
 // Hussein's AVL Tree
 // 2 April 2017
-// Hussein Suleman
+// Hussein Suleman edditied by Liam Watson
 // reference: kukuruku.co/post/avl-trees/
 
 public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT<dataType>
 {
+   private int insertCounter = 0;
+   private int opCounter = 0;
    public int height ( LSBSTNode<dataType> node )
    {
       if (node != null)
@@ -66,8 +68,12 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
    }
    public LSBSTNode<dataType> insert ( dataType d, LSBSTNode<dataType> node )
    {
-      if (node == null)
+      if (node == null){
+	 //System.out.println("Root added" + insertCounter);
+	 
          return new LSBSTNode<dataType> (d, null, null);
+	}
+      insertCounter++;
       if (d.compareTo (node.data) <= 0)
          node.left = insert (d, node.left);
       else
@@ -125,12 +131,19 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
    }
    public LSBSTNode<dataType> find ( dataType d, LSBSTNode<dataType> node )
    {
-      if (d.compareTo (node.data) == 0) 
+	System.out.println(node.height);
+      if (d.compareTo (node.data) == 0){
+	 //System.out.println(opCounter + "____");
+	 opCounter++;
          return node;
-      else if (d.compareTo (node.data) < 0)
+      }else if (d.compareTo (node.data) < 0){
+	 //System.out.println(opCounter + "----");
+	 opCounter = opCounter + 2;
          return (node.left == null) ? null : find (d, node.left);
-      else
+      }else{
+	 opCounter = opCounter + 2;
          return (node.right == null) ? null : find (d, node.right);
+	}
    }
    
    public void treeOrder ()
@@ -147,6 +160,9 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
          treeOrder (node.left, level+1);
          treeOrder (node.right, level+1);
       }
+   }
+   public String getOpcounterT(){
+      return insertCounter + " " + opCounter;
    }
 }
 

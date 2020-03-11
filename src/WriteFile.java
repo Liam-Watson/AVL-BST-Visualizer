@@ -12,7 +12,7 @@ public class WriteFile{
     public WriteFile(Boolean classInfo, String input){
         try{
 		
-            File file = new File("/home/liam/Desktop/University/CSC2001F/Assignments/Assignment1/test.txt");
+            File file = new File("/home/liam/Desktop/University/CSC2001F/Assignments/Assignment2/files/test.txt");
             FileWriter fr = new FileWriter(file, true);
             BufferedWriter br = new BufferedWriter(fr);
             PrintWriter writer = new PrintWriter(br);

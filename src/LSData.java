@@ -42,15 +42,15 @@ public class LSData implements Comparable<LSData>{
 	* @return String the combination of stage, day of month and sTime used to compare
 	*/
     public String getCombData(){
-        return stage + DoM + sTime;
+        return stage + "_" + DoM + "_" + sTime + "";
     }
 	/**
 	* @return int Compare to method.
 	* @param tmp LSData to be compared
 	*/
     public int compareTo(LSData tmp){
-        String combData = stage + DoM + sTime;
-	//System.out.println(this.getCombData() + " Other: " + tmp.getCombData());
+        //String combData = stage + DoM + sTime;
+	//System.out.println(this.toString() + " Other: " + tmp.toString());
 	//opCounter++;
         return (this.getCombData().compareTo(tmp.getCombData()));
 	

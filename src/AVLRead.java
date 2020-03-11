@@ -4,15 +4,16 @@ import java.util.*;
 * @auther Liam Watson
 * This class is used to read in data from a text file and assign it to a binary search tree as well as act as an intermediate between the main class and the manager
 */ 
-public class LSBSTRead{
-    private LSBSTManager<LSData> man = new LSBSTManager<LSData>();
+
+public class AVLRead{
+    private AVLTree<LSData> man = new  AVLTree<LSData>();
     private String stages, day, time, fle;
     private int counterWrk = 0;
 	/**
 	*@param String[], the arguemnts passed into the main class as parameters 
 	* Logic is used to decide how many elements to read as well as assign values to instance variables if needed
 	*/ 
-    public LSBSTRead(String [] args){
+    public AVLRead(String [] args){
         if(args.length == 0){
                 fle = 2976 +"";
 		read();
@@ -21,7 +22,7 @@ public class LSBSTRead{
 	    read();
        }
 	if(args.length == 0){
-		man.preOrder();
+		man.treeOrder();
 	}else if(args.length == 4){
 		this.stages = args[0];
 		this.day = args[1];
@@ -48,9 +49,9 @@ public class LSBSTRead{
                 scLine = new Scanner(sc.nextLine()).useDelimiter(" ");
                 splitData = scLine.next().split("_");
                 while(scLine.hasNext()){
-                    buildLines = buildLines + scLine.next();
+                    buildLines = buildLines.trim() + scLine.next().trim();
                 }
-                man.insert(new LSData(splitData[0], splitData[1], splitData[2], buildLines));
+                man.insert(new LSData(splitData[0].trim(), splitData[1].trim(), splitData[2].trim(), buildLines.trim()));
                 buildLines = "";
                 scLine.close();
             }
@@ -71,7 +72,7 @@ public class LSBSTRead{
 	*@return String of instrumentation data 
 	* This method is used as an intermediate between the main class and the manager
 	*/ 
-	public String getOpCounter(){
-		return man.getOpCounter();
+	public String getOpcounter(){
+		return man.getOpcounterT();
 	}
 }
