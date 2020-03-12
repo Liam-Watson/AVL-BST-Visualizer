@@ -1,8 +1,7 @@
-// Hussein's AVL Tree
-// 2 April 2017
-// Hussein Suleman edditied by Liam Watson
-// reference: kukuruku.co/post/avl-trees/
-
+/* @auther Liam Watson and Hussein Suleman 
+* An AVLTree that has a balance condition added ontop of a binary search tree
+* Hussein Suleman edditied by Liam Watson
+*/
 public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT<dataType>
 {
    private int insertCounter = 0;
@@ -13,17 +12,28 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
          return node.height;
       return -1;
    }
-   
+   /*
+   * @param LSBSTNode node The starting node
+   * @return int corrsponding to the balance factor used for blancing the tree
+   * 
+   */
    public int balanceFactor ( LSBSTNode<dataType> node )
    {
       return height (node.right) - height (node.left);
    }
-   
+   /*
+   * This method traverses the tree and helps in fixing the height
+   *@param LSBSTNode node , the starting node for which the method will traverse the tree and fix the height
+   */
    public void fixHeight ( LSBSTNode<dataType> node )
    {
       node.height = Math.max (height (node.left), height (node.right)) + 1;
    }
-   
+   /*
+   * This method is used for fixing the failed AVL condition
+   * @param p LSBSTNode for which we consider a rotate right
+   * @return LSBSTNode the node to review after the roation 
+   */
    public LSBSTNode<dataType> rotateRight ( LSBSTNode<dataType> p )
    {
       LSBSTNode<dataType> q = p.left;
@@ -33,7 +43,12 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
       fixHeight (q);
       return q;
    }
-
+   /*
+   * 
+   * This method is used for fixing the failed AVL condition
+   * @param q LSBSTNode for which we consider a rotate left
+   * @return LSBSTNode the node to review after the roation 
+   */
    public LSBSTNode<dataType> rotateLeft ( LSBSTNode<dataType> q )
    {
       LSBSTNode<dataType> p = q.right;
@@ -43,7 +58,11 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
       fixHeight (p);
       return p;
    }
-   
+   /*
+   * This method is used to begin the balancing process and decide which rotation to preform
+   *@param p LSBSTNode which is used to begin the balancing
+   *@return LSBSTNode the fixed node reference 
+   */
    public LSBSTNode<dataType> balance ( LSBSTNode<dataType> p )
    {
       fixHeight (p);
@@ -61,11 +80,18 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
       }
       return p;
    }
-
+   /*
+   *This method is a helper for the main insert method
+   *@param d dataType this is the data to be added to the tree
+   */
    public void insert ( dataType d )
    {
       root = insert (d, root);
    }
+   /*
+   *This method inserts an object into the AVL tree
+   *@param d node to be inserted and LSBSTNode aswell as the current node under consideration
+   */
    public LSBSTNode<dataType> insert ( dataType d, LSBSTNode<dataType> node )
    {
       if (node == null){
@@ -80,48 +106,11 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
          node.right = insert (d, node.right);
       return balance (node);
    }
-   
-   public void delete ( dataType d )
-   {
-      root = delete (d, root);
-   }   
-   public LSBSTNode<dataType> delete ( dataType d, LSBSTNode<dataType> node )
-   {
-      if (node == null) return null;
-      if (d.compareTo (node.data) < 0)
-         node.left = delete (d, node.left);
-      else if (d.compareTo (node.data) > 0)
-         node.right = delete (d, node.right);
-      else
-      {
-         LSBSTNode<dataType> q = node.left;
-         LSBSTNode<dataType> r = node.right;
-         if (r == null)
-            return q;
-         LSBSTNode<dataType> min = findMin (r);
-         min.right = removeMin (r);
-         min.left = q;
-         return balance (min);
-      }
-      return balance (node);
-   }
-   
-   public LSBSTNode<dataType> findMin ( LSBSTNode<dataType> node )
-   {
-      if (node.left != null)
-         return findMin (node.left);
-      else
-         return node;
-   }
-
-   public LSBSTNode<dataType> removeMin ( LSBSTNode<dataType> node )
-   {
-      if (node.left == null)
-         return node.right;
-      node.left = removeMin (node.left);
-      return balance (node);
-   }
-
+   /*
+   *This is the helpr for the main fund method
+   *@param d dataType which is the entry being searched for
+   *@return LSBSTNode which is the node containg the data element that was searched for
+   */
    public LSBSTNode<dataType> find ( dataType d )
    {
       if (root == null)
@@ -129,6 +118,11 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
       else
          return find (d, root);
    }
+   /*
+   *This is the search method to find a data element in the AVL tree
+   *@param d dataType which is the entry being searched for
+   *@return LSBSTNode which is the node containg the data element that was searched for
+   */
    public LSBSTNode<dataType> find ( dataType d, LSBSTNode<dataType> node )
    {
 	System.out.println(node.height);
@@ -145,11 +139,17 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
          return (node.right == null) ? null : find (d, node.right);
 	}
    }
-   
+   /*
+   *This is the helper method for producing a full tree output
+   */
    public void treeOrder ()
    {
       treeOrder (root, 0);
    }
+   /*
+   *This is the method used to output all the data in the AVL tree to the screen
+   *@param node the node under consideration and level int which is the height of the current subtree
+   */
    public void treeOrder ( LSBSTNode<dataType> node, int level )
    {
       if (node != null)
@@ -161,6 +161,10 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
          treeOrder (node.right, level+1);
       }
    }
+   /*
+   *This method is used to parse the instrumentation results to the read class then the main class
+   *@retrun String value of the instrumentation 
+   */
    public String getOpcounterT(){
       return insertCounter + " " + opCounter;
    }
