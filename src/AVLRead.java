@@ -1,4 +1,5 @@
 import java.io.*;
+import javax.swing.*;
 import java.util.*;
 /**
 * @auther Liam Watson
@@ -66,7 +67,11 @@ public class AVLRead{
 	* 
 	*/ 
 	public void findMethod(){
-		man.find(new LSData(stages,day,time,""));
+	        JFrame f = new JFrame();
+	        if(man.find(new LSData(stages,day,time,""))== null)
+	            JOptionPane.showMessageDialog(f,null,"Could not find load shedding data", JOptionPane.WARNING_MESSAGE);
+	        else
+                    System.out.println(man.find(new LSData(stages,day,time,"")).data.toString());
 	}
 	/**
 	*@return String of instrumentation data 

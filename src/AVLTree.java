@@ -1,3 +1,4 @@
+import javax.swing.*;
 /* @auther Liam Watson and Hussein Suleman 
 * An AVLTree that has a balance condition added ontop of a binary search tree
 * Hussein Suleman edditied by Liam Watson
@@ -113,10 +114,13 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
    */
    public LSBSTNode<dataType> find ( dataType d )
    {
-      if (root == null)
+      JFrame f = new JFrame();
+      if (root == null){
+         JOptionPane.showMessageDialog(f,null,"TREE IS EMPTY", JOptionPane.WARNING_MESSAGE);
          return null;
-      else
+      }else{
          return find (d, root);
+         }
    }
    /*
    *This is the search method to find a data element in the AVL tree
