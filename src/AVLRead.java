@@ -68,10 +68,15 @@ public class AVLRead{
 	*/ 
 	public void findMethod(){
 	        JFrame f = new JFrame();
-	        if(man.find(new LSData(stages,day,time,""))== null)
+	        man.find(new LSData(stages,day,time,""));
+	        LSBSTNode<LSData> node = man.find(new LSData(stages,day,time,""));
+	        if(node == null){
+	            //System.out.println("Could Not find node");
 	            JOptionPane.showMessageDialog(f,null,"Could not find load shedding data", JOptionPane.WARNING_MESSAGE);
-	        else
-                    System.out.println(man.find(new LSData(stages,day,time,"")).data.toString());
+	            System.exit(0);
+	        }else{
+                    System.out.println(node.data.toString());
+                    }
 	}
 	/**
 	*@return String of instrumentation data 
