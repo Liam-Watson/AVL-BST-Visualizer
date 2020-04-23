@@ -58,7 +58,10 @@ public class LSBSTRead{
         }catch(IOException e){
             System.out.println("IO Error, file not found");
         }
-        
+        man.computeNodePositions(); //finds x,y positions of the tree nodes
+    man.maxheight=man.treeHeight(man.root); //finds tree height for scaling y axis
+    DisplaySimpleTree dt = new DisplaySimpleTree(man);//get a display panel
+    dt.setVisible(true); //show the display
     }
 	/**
 	* This is an intermediate method used to for finding elements in a BST 

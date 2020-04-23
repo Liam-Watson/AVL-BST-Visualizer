@@ -8,6 +8,8 @@ public class LSBSTNode<dataType>{
     LSBSTNode<dataType> left;
     LSBSTNode<dataType> right;
     int height;
+    int xpos;  //stores x and y position of the node in the tree
+    int ypos; 
 	/**
 	* A constructor used to assign values to instance variables 
 	* @param Values to assign to instance variables
