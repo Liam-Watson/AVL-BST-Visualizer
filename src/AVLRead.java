@@ -90,6 +90,7 @@ public class AVLRead{
 	            
 	        }else{
                     System.out.println(node.data.toString());
+                    System.out.println("The number of comparisons " +man.getOpcounterT());
                     }
 	}
 	/**
