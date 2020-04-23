@@ -19,7 +19,6 @@ public class DisplaySimpleTree extends JFrame {
   //int counter = 0;  
 
   public DisplaySimpleTree(LSBT<LSData> t) {
-    System.out.println("made it into the important stuff");
     panel = new DisplayPanel(t);
     panel.setPreferredSize(new Dimension(1500, 750));
     scrollpane = new JScrollPane(panel);

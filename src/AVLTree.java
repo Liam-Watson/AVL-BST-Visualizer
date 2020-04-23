@@ -95,9 +95,7 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
    */
    public LSBSTNode<dataType> insert ( dataType d, LSBSTNode<dataType> node )
    {
-      if (node == null){
-	 //System.out.println("Root added" + insertCounter);
-	 
+      if (node == null){	 
          return new LSBSTNode<dataType> (d, null, null);
 	}
       insertCounter++;
@@ -129,13 +127,10 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
    */
    public LSBSTNode<dataType> find ( dataType d, LSBSTNode<dataType> node )
    {
-	//System.out.println(node.height);
       if (d.compareTo (node.data) == 0){
-	 //System.out.println(opCounter + "____");
 	 opCounter++;
          return node;
       }else if (d.compareTo (node.data) < 0){
-	 //System.out.println(opCounter + "----");
 	 opCounter = opCounter + 2;
          return (node.left == null) ? null : find (d, node.left);
       }else{
@@ -158,8 +153,6 @@ public class AVLTree<dataType extends Comparable<? super dataType>> extends LSBT
    {
       if (node != null)
       {
-         //for ( int i=0; i<level; i++ )
-         //   System.out.print (" ");
          System.out.println (node.data);
          treeOrder (node.left, level+1);
          treeOrder (node.right, level+1);
