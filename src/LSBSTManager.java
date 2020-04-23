@@ -89,6 +89,8 @@ public class LSBSTManager<T extends Comparable<? super T>> extends LSBT<T>{
       opCounterWOPreProcessing = opCounterWOPreProcessing + 1;
       if (d.compareTo(node.data) == 0) {
 	 System.out.println(node.data.toString());
+	 System.out.println("The number of comparisons in the insert " + opCounter);
+	 System.out.println("The number of comparisons in the search " + opCounterWOPreProcessing);
          return node;
       }else if (d.compareTo (node.data) < 0){
 	 opCounterWOPreProcessing++;         
