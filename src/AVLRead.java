@@ -26,7 +26,6 @@ public class AVLRead{
        }
 	if(args.length == 0){
 		man.treeOrder();
-		System.out.println("Made it to the treeOrder Call");
 	}else if(args.length == 4){
 		this.stages = args[0];
 		this.day = args[1];
