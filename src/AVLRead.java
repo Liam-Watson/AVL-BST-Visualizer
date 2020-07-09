@@ -33,8 +33,6 @@ public class AVLRead{
 		findMethod();
 		
 	}
-	//DisplaySimpleTree disp = new DisplaySimpleTree(man);
-
     }
 	
 	/**
@@ -67,9 +65,6 @@ public class AVLRead{
     man.computeNodePositions(); //finds x,y positions of the tree nodes
     man.maxheight=man.treeHeight(man.root); //finds tree height for scaling y axis
     DisplaySimpleTree dt = new DisplaySimpleTree(man);//get a display panel
-    //Graphics2D g2 = (Graphics2D)dt;
-   // dt.translate(1600,900);
-    //dt.scale(0.5,0.5);
     dt.setVisible(true); //show the display
         
     }
@@ -86,16 +81,13 @@ public class AVLRead{
 	            System.out.println("Could Not find node");
 	            System.out.println("The number of comparisons in the insert " +man.getOpcounterT().split(" ")[0]);
                     System.out.println("The number of comparisons in the search " +man.getOpcounterT().split(" ")[1]);
-
 	            JOptionPane.showMessageDialog(f,null,"Could not find load shedding data", JOptionPane.WARNING_MESSAGE);
-	            //System.exit(0);
 	            f.dispose();
-	            
+            
 	        }else{
                     System.out.println(node.data.toString());
                     System.out.println("The number of comparisons in the insert " +man.getOpcounterT().split(" ")[0]);
                     System.out.println("The number of comparisons in the search " +man.getOpcounterT().split(" ")[1]);
-
                     }
 	}
 	/**

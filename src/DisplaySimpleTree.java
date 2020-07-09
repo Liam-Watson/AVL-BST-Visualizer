@@ -1,8 +1,5 @@
 // Code for popping up a window that displays a custom component
-// in this case we are displaying a Binary Search tree  
-// reference problem 4.38 of Weiss to compute tree node x,y positions
 //Credit to unknown author for the base code
-// input is a text file name that will form the Binary Search Tree
 
 
 import javax.swing.*;

@@ -12,7 +12,6 @@ public class LSData implements Comparable<LSData>{
         this.DoM = DoM;
         this.sTime = sTime;
         this.areas = areas;
-//        System.out.println("The constructor has been reached");
     }
 	/**
 	* @return String stage
@@ -49,9 +48,6 @@ public class LSData implements Comparable<LSData>{
 	* @param tmp LSData to be compared
 	*/
     public int compareTo(LSData tmp){
-        //String combData = stage + DoM + sTime;
-	//System.out.println(this.toString() + " Other: " + tmp.toString());
-	//opCounter++;
         return (this.getCombData().compareTo(tmp.getCombData()));
 	
     }
@@ -60,8 +56,5 @@ public class LSData implements Comparable<LSData>{
 	*/
     public String toString(){
         return stage + "_" + DoM + "_" + sTime + " " + areas;
-    }
-   /* public String toString(){
-        return "stage: " + stage + " Day of month: " + DoM + " Start time: " + sTime + " Areas: " + areas;
-    }*/    
+    }  
 }

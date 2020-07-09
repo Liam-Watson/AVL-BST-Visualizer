@@ -27,7 +27,6 @@ public class LSBSTRead{
 		this.day = args[1];
 		this.time = args[2];	
 		findMethod();
-		
 	}
     }
 	
