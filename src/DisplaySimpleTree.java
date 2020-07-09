@@ -1,10 +1,8 @@
 // Code for popping up a window that displays a custom component
 // in this case we are displaying a Binary Search tree  
 // reference problem 4.38 of Weiss to compute tree node x,y positions
-
+//Credit to unknown author for the base code
 // input is a text file name that will form the Binary Search Tree
-
-//     java DisplaySimpleTree textfile
 
 
 import javax.swing.*;
@@ -13,11 +11,18 @@ import java.awt.*;
 import java.io.*;
 import java.util.*;
 
+/*
+@author Anonymous and Liam Watson
+class used for generating a jframe containing the image of the tree
+*/
 public class DisplaySimpleTree extends JFrame {
   JScrollPane scrollpane;
   DisplayPanel panel;
   //int counter = 0;  
-
+/*
+@param LSBT t 
+prepares the pannel and calls needed methods
+*/
   public DisplaySimpleTree(LSBT<LSData> t) {
     panel = new DisplayPanel(t);
     panel.setPreferredSize(new Dimension(1500, 750));
@@ -25,48 +30,11 @@ public class DisplaySimpleTree extends JFrame {
     getContentPane().add(scrollpane, BorderLayout.CENTER);
     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     pack();  // cleans up the window panel
-    //t.computeNodePositions(); //finds x,y positions of the tree nodes
-    //t.maxheight=t.treeHeight(t.root); //finds tree height for scaling y axis
-    //DisplaySimpleTree dt = new DisplaySimpleTree(t);//get a display panel
-    //this.setVisible(true); //show the display
-    //System.out.println("Ran all the important stuff");
-	//System.exit(0);
+
   }
-
-/*  public static void main(String[] args) {
-    int counter = 0;
-    MyTree t = new MyTree(); // t is Binary tree we are displaying
-    BufferedReader diskInput;
-    String [] word;
-    // read in the words to create the Binary Search Tree
-    if(args.length!=1){
-	System.out.println("usage: java DisplayTree textfile");
-//        System.exit(0);
-    }
-    try { //reads in words from a file
-//      diskInput = new BufferedReader(new InputStreamReader(
-//          new FileInputStream(
-//	      new File(args[0]))));// file name is on command line
-      Scanner input=new Scanner(new File("/home/liam/Desktop/University/CSC2001F/Assignments/Assignment2/files/RandomizedData.txt"));
-      while (input.hasNext() && counter < 1000) { 
-        word=input.nextLine().split(" ");
-        counter++;             
-        //word=word.toLowerCase(); // use lower case only
-        t.root = t.insert(t.root, word[0]);  //insert word into Binary Search Tree
-        t.inputString= t.inputString + " " + word[0]; // add word to input string
-      }
-    }
-    catch (IOException e) {
-        System.out.println("io exception");
-      }
-
-    t.computeNodePositions(); //finds x,y positions of the tree nodes
-    t.maxheight=t.treeHeight(t.root); //finds tree height for scaling y axis
-    DisplaySimpleTree dt = new DisplaySimpleTree(t);//get a display panel
-    dt.setVisible(true); //show the display
-  }
-}*/
-
+/*
+Sets up pannel 
+*/
   class DisplayPanel extends JPanel {
      LSBT<LSData> t;
      int xs;
@@ -77,7 +45,11 @@ public class DisplaySimpleTree extends JFrame {
       setBackground(Color.white);
       setForeground(Color.black);
     }
-
+/*
+@param g Graphics object
+@return void
+Main logic for drawing the tree and parameters for font and color ect. Also calls the drawTree method
+*/
     protected void paintComponent(Graphics g) {
       g.setColor(getBackground()); //colors the window
       g.fillRect(0, 0, getWidth(), getHeight());
@@ -104,7 +76,10 @@ public class DisplaySimpleTree extends JFrame {
       this.drawTree(g, t.root); // draw the tree
       revalidate(); //update the component panel
     }
-
+/*
+@param g Graphics object, root LSBSTNode
+This method draws individial nodes.
+*/
       public void drawTree(Graphics g, LSBSTNode root) {//actually draws the tree
       int dx, dy, dx2, dy2;
       int SCREEN_WIDTH=3000; //screen size for panel

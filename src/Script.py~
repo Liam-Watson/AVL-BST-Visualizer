@@ -1,0 +1,16 @@
+import os
+f = open("/home/liam/Desktop/University/CSC2001F/Assignments/Assignment1/RandomizedData.txt", "r")
+counter = 0
+lines = 296
+if f.mode == "r":
+    read = f.readlines()
+    for x in read:
+        s = x.split()
+        s2 = s[0].split("_")
+        if counter == lines:
+            break
+        counter+= 1
+        command = "java -cp bin LSBSTApp \"" + s2[0] + "\" \"" + s2[1] + "\" \"" + s2[2] + "\" \"" + str(lines) + "\" "#>> /home/liam/Desktop/University/CSC2001F/Assignments/Assignment1/test.txt"
+        os.system(command)
+        print(command) 
+    

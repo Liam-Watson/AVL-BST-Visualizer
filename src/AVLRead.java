@@ -84,6 +84,9 @@ public class AVLRead{
 	        LSBSTNode<LSData> node = man.find(new LSData(stages,day,time,""));
 	        if(node == null){
 	            System.out.println("Could Not find node");
+	            System.out.println("The number of comparisons in the insert " +man.getOpcounterT().split(" ")[0]);
+                    System.out.println("The number of comparisons in the search " +man.getOpcounterT().split(" ")[1]);
+
 	            JOptionPane.showMessageDialog(f,null,"Could not find load shedding data", JOptionPane.WARNING_MESSAGE);
 	            //System.exit(0);
 	            f.dispose();

@@ -74,6 +74,9 @@ public class LSBSTManager<T extends Comparable<? super T>> extends LSBT<T>{
 	//System.out.println(opCounter);
       //opCounterWOPreProcessing++;
       if (root == null){
+         System.out.println("Could Not find node");
+         System.out.println("The number of comparisons in the insert " + opCounter);
+	 System.out.println("The number of comparisons in the search " + opCounterWOPreProcessing);
          return null;
       }else{
          return find (d, root);
@@ -93,10 +96,20 @@ public class LSBSTManager<T extends Comparable<? super T>> extends LSBT<T>{
 	 System.out.println("The number of comparisons in the search " + opCounterWOPreProcessing);
          return node;
       }else if (d.compareTo (node.data) < 0){
-	 opCounterWOPreProcessing++;         
+	 opCounterWOPreProcessing++;     
+	 if(node.left == null){
+	    System.out.println("Could Not find node");
+	  System.out.println("The number of comparisons in the insert " + opCounter);
+	 System.out.println("The number of comparisons in the search " + opCounterWOPreProcessing);
+	 }    
 	return (node.left == null) ? null : find (d, node.left);
       }else{
 	 opCounterWOPreProcessing++;
+	 if(node.right == null){
+            System.out.println("Could Not find node");
+           System.out.println("The number of comparisons in the insert " + opCounter);
+	 System.out.println("The number of comparisons in the search " + opCounterWOPreProcessing);
+         }    
          return (node.right == null) ? null : find (d, node.right);
 	}
    }
